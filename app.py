@@ -103,4 +103,4 @@ Flask App Entry Point (Main)
 """
 if __name__ == "__main__":
     print(pickle.format_version)
-    app.run(debug=True, use_reloader=False, host='0.0.0.0')
+    app.run(debug=True, use_reloader=False)
