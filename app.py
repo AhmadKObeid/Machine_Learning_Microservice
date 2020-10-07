@@ -3,8 +3,6 @@
 Import Necessary Libraries 
 """
 from flask import Flask, request
-# from flask_caching import Cache
-# import csv
 import pickle
 import numpy as np
 import argparse
@@ -20,23 +18,15 @@ def read_arguments():
     [summary]
     
     reading arguments from console
-    """
-    parser = argparse.ArgumentParser(description='Linear Regression Model')
-    parser.add_argument('path', type=str, help='Model Path')
-    args = parser.parse_args()
-    return args
 
-def get_path(args):
-    """[summary]
-    extracting the model path from the arguments
 
-    Args:
-        args (list): arguments list
     Returns:
-        [string]: model path
+        [String]: path to model
     """
-    path = args.path
-    return path
+    parser = argparse.ArgumentParser(prog='Linear Regression Model',usage='%(prog)s [options] path to model')
+    parser.add_argument('-path', type=str, help='Model Path',required=True)
+    model_path = parser.parse_args()
+    return model_path
 
 def get_data():
     """Extracts the data from the post request
@@ -64,9 +54,7 @@ def predicted_price(data):
     Returns:
         [Float]: the output of the linear Model Object
     """
-    args = read_arguments()
-    path = get_path(args)
-    loaded_model = pickle.load(open(path, 'rb'))
+
     price = loaded_model.predict(data)
 
     return price[0]
@@ -91,15 +79,14 @@ def get_predicted_price():
     """
 
     if request.method == "POST":
-        data = get_data()
-        return (
-            "The house is evaluated at: "
-            + str(predicted_price(data))
-            + " per unit area"
-        )
+        return (str(predicted_price(get_data())))
 
 """
 Flask App Entry Point (Main)
 """
 if __name__ == "__main__":
+    #read arguments at app launch
+    args = read_arguments()
+    #load model at app launch
+    loaded_model = pickle.load(open(args.path, 'rb'))
     app.run(debug=True, use_reloader=False,host='0.0.0.0')
