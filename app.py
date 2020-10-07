@@ -102,4 +102,4 @@ def get_predicted_price():
 Flask App Entry Point (Main)
 """
 if __name__ == "__main__":
-    app.run(debug=True, use_reloader=False,host='0.0.0.0)
+    app.run(debug=True, use_reloader=False,host='0.0.0.0')
