@@ -102,5 +102,4 @@ def get_predicted_price():
 Flask App Entry Point (Main)
 """
 if __name__ == "__main__":
-    print(pickle.format_version)
     app.run(debug=True, use_reloader=False)
