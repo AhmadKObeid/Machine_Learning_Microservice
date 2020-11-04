@@ -24,4 +24,4 @@ jobs:
 
       - name: Docker Build Step
         run: |
-          docker build -t ahmadobeid/micro-service:latest
+          docker build ./Machine_Learning_Microservice -t ahmadobeid/micro-service:latest
