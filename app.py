@@ -65,7 +65,7 @@ Flask App Routes
 """
 @app.route("/")
 def welcome():
-    return "Welcome to my Model!"
+    return "Welcome to my Micro-service!"
 
 @app.route("/predict", methods=["GET", "POST"])
 def get_predicted_price():
