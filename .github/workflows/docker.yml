@@ -21,7 +21,18 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
-
+        
+      - name: Docker Login
+        env:
+          DOCKER_ID: ${{secrets.DOCKER_ID}}
+          DOCKER_PSWD: ${{secrets.DOCKER_PSWD}
+        run: |
+          docker login -u $DOCKER_ID -p $DOCKER_PSWD
+          
       - name: Docker Build Step
         run: |
           docker build ./ -t ahmadobeid/micro-service:latest
+      - name: Docker Push Step
+        run: |
+          docker push ahmadobeid/micro-service:latest
+          
