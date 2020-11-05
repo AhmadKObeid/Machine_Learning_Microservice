@@ -17,7 +17,7 @@ def read_arguments():
     """
     [summary]
     
-    reading arguments from console
+    reading arguments from 
 
 
     Returns:
@@ -65,7 +65,7 @@ Flask App Routes
 """
 @app.route("/")
 def welcome():
-    return "Welcome to my Micro-service!"
+    return "Welcome to my MODEL!"
 
 @app.route("/predict", methods=["GET", "POST"])
 def get_predicted_price():
