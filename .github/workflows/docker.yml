@@ -34,7 +34,7 @@ jobs:
           docker build ./ -t ahmadobeid/micro-service:latest
       - name: Docker Push Step
         run: |
-          docker push ahmadobeid/micro-service:latest:
+          docker push ahmadobeid/micro-service:latest
   deploy:
     runs-on: ubuntu-latest
     steps:
