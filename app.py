@@ -89,5 +89,5 @@ if __name__ == "__main__":
     args = read_arguments()
     #load model at app launch
     loaded_model = pickle.load(open(args.path, 'rb'))
-    port - int(os.environ.get('PORT',5000))
+    port = int(os.environ.get('PORT',5000))
     app.run(debug=True, use_reloader=False,host='0.0.0.0', port =port)
